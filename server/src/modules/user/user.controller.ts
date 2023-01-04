@@ -17,7 +17,7 @@ export async function registerUserHandler(
   } catch (e) {
     console.error(e);
 
-    return reply.code(500).send();
+    return reply.code(500).send("Username already taken");
   }
 }
 

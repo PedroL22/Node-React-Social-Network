@@ -2,9 +2,9 @@ import React, { FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../state";
+import { toast } from "react-toastify";
 import axios from "axios";
 import Navbar from "../components/Navbar";
-import { toast } from "react-toastify";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -17,9 +17,9 @@ export default function Login() {
   const notifyError = (notif: string) => toast.error(notif);
 
   // check if the device is in dark mode
-  function isDarkMode() {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
-  }
+  // function isDarkMode() {
+  //   return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  // }
 
   const handleLogin = async (event: FormEvent) => {
     event.preventDefault();
