@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../state";
 import axios from "axios";
@@ -104,9 +104,11 @@ export default function Login() {
             <p className="text-sm text-gray-600 dark:text-gray-200">
               Not registered yet?
             </p>
-            <p className="text-sm ml-1 font-medium cursor-pointer hover:underline dark:text-white">
-              Register
-            </p>
+            <Link to="/register">
+              <p className="text-sm ml-1 font-medium cursor-pointer hover:underline dark:text-white">
+                Register
+              </p>
+            </Link>
           </div>
         </form>
       </div>

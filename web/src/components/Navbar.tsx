@@ -1,22 +1,21 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setLogout } from "../state";
 
 export default function Navbar() {
   const user = useSelector((state: any) => state.user);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   return (
     <div className="navbar bg-violet-700 dark:bg-violet-800">
       <div className="flex-1">
-        <a
+        <Link
           className="btn btn-ghost normal-case text-xl text-white dark:text-white"
-          onClick={() => navigate("/")}
+          to="/"
         >
           Node Social Network
-        </a>
+        </Link>
       </div>
       {user ? (
         <div className="flex-none">
@@ -31,25 +30,23 @@ export default function Navbar() {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a className="justify-between text-white dark:text-white">
-                  Profile
-                </a>
+                <a className="justify-between dark:text-white">Profile</a>
               </li>
               <li onClick={() => dispatch(setLogout())}>
-                <a className="text-white dark:text-white">Logout</a>
+                <p className="dark:text-white">Logout</p>
               </li>
             </ul>
           </div>
         </div>
       ) : (
-        <div
+        <Link
           className="flex-none cursor-pointer text-white dark:text-white"
-          onClick={() => navigate("/login")}
+          to="/login"
         >
           <p className="font-semibold text-lg mr-1 btn btn-ghost normal-case text-white dark:text-white">
             Login
           </p>
-        </div>
+        </Link>
       )}
     </div>
   );
