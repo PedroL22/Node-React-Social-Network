@@ -14,7 +14,7 @@ export default function Navbar() {
           className="btn btn-ghost normal-case text-xl text-white dark:text-white"
           to="/"
         >
-          Node Social Network
+          <h1>Node Social Network</h1>
         </Link>
       </div>
       {user ? (
@@ -30,7 +30,9 @@ export default function Navbar() {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a className="justify-between dark:text-white">Profile</a>
+                <Link className="justify-between dark:text-white" to="/profile">
+                  Profile
+                </Link>
               </li>
               <li onClick={() => dispatch(setLogout())}>
                 <p className="dark:text-white">Logout</p>
