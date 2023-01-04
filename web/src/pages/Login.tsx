@@ -66,6 +66,7 @@ export default function Login() {
           content="Full, Stack, Developer, Pedro, Lucena, social, network, Fastify, React, Redux, Tailwind CSS, DaisyUI, Material UI, Prisma"
         />
         <meta name="author" content="Pedro Lucena" />
+        <meta name="robots" content="index, follow" />
         <title>Login - React Node Social Network</title>
       </Helmet>
       <div className="bg-gray-200 dark:bg-gray-800 h-screen">
