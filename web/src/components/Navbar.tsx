@@ -8,7 +8,7 @@ export default function Navbar() {
   const dispatch = useDispatch();
 
   return (
-    <div className="navbar bg-violet-700 dark:bg-violet-800">
+    <div className="navbar bg-violet-700">
       <div className="flex-1">
         <Link
           className="btn btn-ghost normal-case text-xl text-white dark:text-white"
