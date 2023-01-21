@@ -4,6 +4,7 @@ import cors from "@fastify/cors";
 import dotenv from "dotenv";
 import userRoutes from "./modules/user/user.route";
 import { userSchemas } from "./modules/user/user.schema";
+import postRoutes from "./modules/post/post.route";
 
 export const server = Fastify();
 
@@ -42,7 +43,9 @@ async function main() {
   for (const schema of userSchemas) {
     server.addSchema(schema);
   }
+
   server.register(userRoutes);
+  server.register(postRoutes);
 
   try {
     await server.listen({ port: process.env.PORT as any });

@@ -11,8 +11,17 @@ datasource db {
 }
 
 model Users {
-  id       String @id @default(cuid())
-  username String @unique
+  id       String  @id @default(cuid())
+  username String  @unique
   password String
   salt     String
+  Posts    Posts[]
+}
+
+model Posts {
+  id        String   @id @default(cuid())
+  user      Users    @relation(fields: [usersId], references: [username])
+  usersId   String
+  text      String
+  createdAt DateTime @default(now())
 }
