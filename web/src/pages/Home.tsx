@@ -1,8 +1,32 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import { useQuery } from "react-query";
+import axios from "axios";
 import Navbar from "../components/Navbar";
 
+interface Post {
+  id: string;
+  text: string;
+  usersId: string;
+}
+
+interface Posts {
+  posts: Post[];
+}
+
 export default function Home() {
+  const { data, isFetching } = useQuery<Posts>(["post list"], async () => {
+    const response = await axios({
+      method: "get",
+      url: import.meta.env.VITE_SERVER_URL + "/",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return { ...response.data };
+  });
+
   return (
     <>
       <Helmet>
@@ -19,6 +43,15 @@ export default function Home() {
       </Helmet>
       <div className="bg-gray-200 h-screen">
         <Navbar />
+        {isFetching ? (
+          <p>Loading...</p>
+        ) : (
+          <div>
+            {data?.posts?.map((item) => (
+              <div>{item.text}</div>
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

@@ -39,5 +39,5 @@ export async function deletePostHandler(request: any, reply: FastifyReply) {
 export async function getPostsHandler() {
   const posts = await findPosts();
 
-  return posts;
+  return { posts };
 }

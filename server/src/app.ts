@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import userRoutes from "./modules/user/user.route";
 import { userSchemas } from "./modules/user/user.schema";
 import postRoutes from "./modules/post/post.route";
+import { getPostsHandler } from "./modules/post/post.controller";
 
 export const server = Fastify();
 
@@ -38,6 +39,8 @@ server.decorate(
 server.get("/healthcheck", async function (request, response) {
   return { status: "OK" };
 });
+
+server.get("/", getPostsHandler);
 
 async function main() {
   for (const schema of userSchemas) {

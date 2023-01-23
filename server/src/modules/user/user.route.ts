@@ -1,5 +1,4 @@
 import { FastifyInstance } from "fastify";
-import { getPostsHandler } from "../post/post.controller";
 import {
   getUsersHandler,
   loginHandler,
@@ -29,8 +28,6 @@ async function userRoutes(server: FastifyInstance) {
     },
     loginHandler
   );
-
-  server.get("/", { preHandler: [server.auth] }, getPostsHandler);
 }
 
 export default userRoutes;
